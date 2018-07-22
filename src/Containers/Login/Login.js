@@ -2,6 +2,24 @@ import React, {Component} from  'react'
 import Logo from '../../Components/Logo/Logo'
 
 class Login extends Component {
+
+    state = {
+        userName: '',
+        userPassword: ''
+    }
+
+    userNameHandler = (event) => {
+        this.setState({
+            userName: event.target.value
+        })
+    }
+
+    userPasswordHandler = (event) => {
+        this.setState({
+            userPassword: event.target.value
+        })
+    }
+
     render() {
         return (
             <div className={"LoginPage"}>
@@ -22,11 +40,11 @@ class Login extends Component {
                                 <form>
                                     <div className="form-group">
                                         <label htmlFor="usr">Name:</label>
-                                        <input type="text" className="form-control" id="usr" required/>
+                                        <input type="text" className="form-control" id="usr" onChange={() => this.userNameHandler()} required/>
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="pwd">Password:</label>
-                                        <input type="password" className="form-control" id="pwd" required/>
+                                        <input type="password" className="form-control" id="pwd" onChange={() => this.userPasswordHandler()} required/>
                                     </div>
                                     <button type="button" className="btn btn-primary btn-lg btn-block orange">GO</button>
                                     <p className={"text-right forgetMessage"}>Забыли пароль?</p>
